@@ -1,0 +1,63 @@
+# Default configuration for music style transfer
+
+# Audio processing configuration
+audio:
+  sample_rate: 22050
+  n_fft: 2048
+  hop_length: 512
+  n_mels: 128
+  n_mfcc: 13
+  fmin: 0.0
+  fmax: null
+  preemphasis: 0.97
+  max_duration: 30.0
+
+# Model configuration
+model:
+  model_type: cnn  # cnn, transformer, gan
+  input_dim: 128
+  hidden_dim: 256
+  num_layers: 4
+  dropout: 0.1
+  attention_heads: 8
+  style_weight: 1.0
+  content_weight: 1.0
+  perceptual_weight: 0.1
+
+# Training configuration
+training:
+  batch_size: 16
+  learning_rate: 1e-4
+  num_epochs: 100
+  warmup_epochs: 10
+  weight_decay: 1e-5
+  gradient_clip: 1.0
+  save_interval: 10
+  eval_interval: 5
+  early_stopping_patience: 20
+
+# Data configuration
+data:
+  data_dir: data
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  augment: true
+  noise_prob: 0.3
+  pitch_shift_prob: 0.3
+  time_stretch_prob: 0.3
+
+# System settings
+device: auto  # auto, cpu, cuda, mps
+num_workers: 4
+seed: 42
+
+# Paths
+output_dir: outputs
+checkpoint_dir: checkpoints
+log_dir: logs
+
+# Experiment tracking
+use_wandb: false
+wandb_project: music-style-transfer
+wandb_entity: null
